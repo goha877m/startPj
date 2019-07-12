@@ -447,7 +447,11 @@
 	var sel;
 	function genQuestion(){
 		$("#answer").val(" ");
-		sel = randomNum(0,q.length-1);
+		var tsel = sel;
+		while(tsel == sel){
+			sel = randomNum(0,q.length-1);
+		}
+
   		$("#question").val(q[sel]);
 	}
   	$(function($) {

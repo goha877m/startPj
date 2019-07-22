@@ -429,38 +429,54 @@
 	    } 
 	} 
 	var q=new Array(
-  			"100%",
-  			"50%",
-  			"33%",
-  			"25%",
-  			"20%",
-  			"16.7%",
-  			"14.5%",
-  			"12.5%",
-  			"11%",
-  			"10%",
-  			"9.1%",
-  			"8.3%",
-  			"7.7%",
-  			"7.1%",
-  			"6.7%",
+  			"100",
+  			"50",
+  			"33",
+  			"25",
+  			"20",
+  			"16.7",
+  			"14.3",
+  			"12.5",
+  			"11",
+  			"10",
+  			"9.1",
+  			"8.3",
+  			"7.7",
+  			"7.1",
+  			"6.7",
+        "6.25",
+        "5.9",
+        "5.6",
+        "5.3",
   			);
-	var sel;
+	var sel,type;
+  var q_curr,a_curr;
 	function genQuestion(){
 		$("#answer").val(" ");
 		var tsel = sel;
 		while(tsel == sel){
-			sel = randomNum(0,q.length-1);
+      sel = randomNum(0,q.length-1);
 		}
+      type = randomNum(0,1);
+      q_curr = sel+1;
+      a_curr= q[sel]
+      if(type == 0){
+        $("#question").val(q[sel]);
+      } else {
+  		  $("#question").val(q_curr);
+      }
 
-  		$("#question").val(q[sel]);
 	}
   	$(function($) {
   		$("#newquestion").click(function(){
   			genQuestion();
   		})
   		$("#show_answer").click(function(){
-  			$("#answer").val(sel+1);
+        if(type == 0){
+          $("#answer").val(q_curr);
+        } else {
+          $("#answer").val(a_curr);
+        }
   		})
 
 
